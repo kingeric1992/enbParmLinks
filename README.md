@@ -14,9 +14,52 @@ EFFECT.TXT:"target parm" = ENBEFFECT.FX:"source parm"
 ENBDEPTHOFFIELD.FX:"sync fov" = FLOAT:0x01B39A4C
 ```
 where in the [Read] section, the expression on the right hand side will be assigned to the left hand side.
+
 while in the [SYNC] section, any changes from either sides will sync to the counter part.
 
 # Syntax
+## Read-Only expressions:
+___
+`SYSTEM:<SYSVALS>`
+
++ SYSVALS
+
+   avaliable values:
+   + MOUSE_X
+   + MOUSE_Y
+
+      Cursor position on XY coordinate in pixels relative to upper left corner of game window.
+   + KEY_HOLD_*
+   + KEY_PRESS_*
+   + KEY_TOGGLE_*
+
+      Keyboard input states. Replace asterisks with VK keycode of target key.
+
+
+`EXPR:<EXPR_STRING>, <EXPRESSION>,...`
++ EXPR_STRING
+
+   Arithmetic expression enclosed by "".
++ EXPRESSION
+
+   A expresion linked to the variables denoted by a0, a1... in the EXPR_STRING. 
+   Seperate multiple expressions by "," when more then one variables are used.
+   
+Remarks:
+
+   Avaliable operators are: 
+
+## Read-Writes expressions:
+___
+`<SECTION_NAME>:<ENBPARM_UINAME>`
++ SECTION_NAME
+
+   Section names listed by enb UI. For example, ENBBLOOM.FX, COLORCORRECTION, .etc
++ ENBPARAM_UINAME
+
+   Parameter name listed in .fx parm annotation UIName, or name listed in enbUI.
+   
+`<TYPE>:<ADDRESS>+<OFFSET>+...`
 
 # Licence
 
