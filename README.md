@@ -1,10 +1,22 @@
 # enbParmLinks
+A enbplugin for SkyrimLE enb that provides linkage between enb variables or system values and address.
+___
 
+# Installation
+Put enbParmLink.enbplugin under /enbseries in your SkyrimLE base directory.
 
+# Setup
+All linkage is defined through enbParmLink.cfg located in /enbseries, with 2 section [READ] and [SYNC].
+```ini
+[READ]
+EFFECT.TXT:"target parm" = ENBEFFECT.FX:"source parm"
+[SYNC]
+ENBDEPTHOFFIELD.FX:"sync fov" = FLOAT:0x01B39A4C
+```
+where in the [Read] section, the expression on the right hand side will be assigned to the left hand side.
+while in the [SYNC] section, any changes from either sides will sync to the counter part.
 
-
-
-
+# Syntax
 
 # Licence
 
