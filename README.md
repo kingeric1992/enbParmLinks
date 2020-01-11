@@ -3,28 +3,54 @@ A enbplugin for SkyrimLE enb that provides linkage between enb variables or syst
 ___
 
 # Installation
-Put enbParmLink.enbplugin under /enbseries in your SkyrimLE base directory.
+Put enbParmLink.enbplugin under `/enbseries` in your SkyrimLE base directory.
 
 # Setup
-All linkage is defined through enbParmLink.cfg located in /enbseries, with 2 section [READ] and [SYNC].
+All linkage is defined through enbParmLink.cfg located in /enbseries, with 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
 ```ini
+;Expression on the right hand side will be assigned to the left hand side.
 [READ]
 EFFECT.TXT:"target parm" = ENBEFFECT.FX:"source parm"
+
+;Any changes from either sides will sync to the counter part
 [SYNC]
 ENBDEPTHOFFIELD.FX:"sync fov" = FLOAT:0x01B39A4C
-```
-where in the [Read] section, the expression on the right hand side will be assigned to the left hand side.
 
-while in the [SYNC] section, any changes from either sides will sync to the counter part.
+;Values are set upon ENB reset, load or saves.
+[INIT] 
+; to assign simple value to target
+FLOAT:0x01B39A4C = 70
+```
+To assign a calculated value, use keyword `EXPR:`
+```
+EFFECT.TXT:"calculated value" = EXPR:" (a0*2 + a1) ", EFFECT.TXT:"val", EFFECT.TXT:"useCalc"
+```
+where variable are listed after the EXPR expression in sequential order from a0 - a19, separated by commas.
+
+Additionally, multiline expressions and linking to same key is also avalible.
+```ini
+; linking to same variable
+EFFECT.TXT:"VALUE" = EXPR:"conditional(1, (a0 == 0) || ( a0 == 2 ) || (a0 == 4) )", EFFECT.TXT:"raw"
+EFFECT.TXT:"VALUE" = EXPR:"conditional(2, (a0 == 0x01) || ( a0 == 0x03 ) || (a0 == 0x05) )", EFFECT.TXT:"raw"
+
+; multi-line are enclosed by <<<LINES & LINES pairs
+EFFECT.TXT:"focal length" = <<<LINES
+    EXPR:" conditional( 18 /tan(_pi/360 * a0), a0 && (a1 == 0) ) ", 
+    FLOAT:0x01B39A4C , EFFECT.TXT:"calc fov"
+LINES
+```
 
 # Syntax
 ## Read-Only expressions:
 ___
-`SYSTEM:<SYSVALS>`
+### `SYSTEM:<SYSVALS>`
 
 + SYSVALS
 
    avaliable values:
+   + ENBVERSION
+   
+      ENB binary version.
    + MOUSE_X
    + MOUSE_Y
 
@@ -36,7 +62,7 @@ ___
       Keyboard input states. Replace asterisks with VK keycode of target key.
 
 
-`EXPR:<EXPR_STRING>, <EXPRESSION>,...`
+### `EXPR:<EXPR_STRING>, <EXPRESSION>,...`
 + EXPR_STRING
 
    Arithmetic expression enclosed by "".
@@ -47,7 +73,21 @@ ___
    
 Remarks:
 
-   Avaliable operators are: 
+   Numeric operators: `+`, `-`, `*`, `/`, `^`, `%`
+   
+   Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `? :`*(ternary operator)*
+   
+   Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`
+   Special functions: 
+   * `conditional( value, cond)`
+      
+      Only sets the value when the condition is true.
+   
+### `<CONSTANT>`
++ CONSTANT
+
+   Numeric Constant. example usage `FLOAT:0x01B39A4C = 70`
+
 
 ## Read-Writes expressions:
 ___
@@ -58,8 +98,19 @@ ___
 + ENBPARAM_UINAME
 
    Parameter name listed in .fx parm annotation UIName, or name listed in enbUI.
-   
++ example: `ENFEFFECT.FX:"my Awsome Variable"`
+ 
 `<TYPE>:<ADDRESS>+<OFFSET>+...`
++ TYPE
+
+   Variable type of this address. Possible values are `INT`, `FLOAT`, `BOOL`.
++ ADDRESS
+
+   The memory address of the variable.
++ OFFSET
+
+   The memory offsets to apply if base address need to be dereferenced. 
++ example: `FLOAT:0x012E56A0+0x20`
 
 # Licence
 
