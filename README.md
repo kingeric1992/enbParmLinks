@@ -74,8 +74,8 @@ ___
 + **Remarks:**
 
    + Numeric operators: `+`, `-`, `*`, `/`, `^`, `%`
-   + Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `? :`*(ternary operator)*
-   + Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`, `pow(x,y)`
+   + Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `?:`*(ternary operator)*
+   + Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `saturate(x)`, `lerp(x,y,w)`, `pow(x,y)`
    + Special functions: 
         `conditional( value, cond)` Only sets the value when the condition is true.
    
