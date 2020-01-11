@@ -6,7 +6,7 @@ ___
 Put enbParmLink.enbplugin under `/enbseries` in your SkyrimLE base directory.
 
 # Setup
-All linkage is defined through enbParmLink.cfg located in `/enbseries`, with 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
+All linkage is defined through `enbParmLink.cfg` located in `/enbseries`, under 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
 ```ini
 ;Expression on the right hand side will be assigned to the left hand side.
 [READ]
@@ -27,7 +27,7 @@ EFFECT.TXT:"calculated value" = EXPR:" (a0*2 + a1) ", EFFECT.TXT:"val", EFFECT.T
 ```
 where variable are listed after the EXPR expression in sequential order from a0 - a19, separated by commas.
 
-Additionally, multiline expressions and linking to same key is also avalible.
+Additionally, multiline expressions or linking to same key is also avalible.
 ```ini
 ; linking to same variable
 EFFECT.TXT:"VALUE" = EXPR:"conditional(1, (a0 == 0) || ( a0 == 2 ) || (a0 == 4) )", EFFECT.TXT:"raw"
