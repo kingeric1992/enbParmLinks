@@ -45,47 +45,42 @@ LINES
 ___
 ### `SYSTEM:<SYSVALS>`
 
-+ SYSVALS
++ **SYSVALS**
 
    avaliable values:
-   + ENBVERSION
+   + **ENBVERSION**
    
       ENB binary version.
-   + MOUSE_X
-   + MOUSE_Y
+   + **MOUSE_X**
+   + **MOUSE_Y**
 
       Cursor position on XY coordinate in pixels relative to upper left corner of game window.
-   + KEY_HOLD_*
-   + KEY_PRESS_*
-   + KEY_TOGGLE_*
+   + <strong>KEY_HOLD_*</strong>
+   + <strong>KEY_PRESS_*</strong>
+   + <strong>KEY_TOGGLE_*</strong>
 
       Keyboard input states. Replace asterisks with VK keycode of target key.
 
 
 ### `EXPR:<EXPR_STRING>, <EXPRESSION>,...`
-+ EXPR_STRING
++ **EXPR_STRING**
 
    Arithmetic expression enclosed by "".
-+ EXPRESSION
++ **EXPRESSION**
 
    A expresion linked to the variables denoted by a0, a1... in the EXPR_STRING. 
    Seperate multiple expressions by "," when more then one variables are used.
    
-Remarks:
++ **Remarks:**
 
-   Numeric operators: `+`, `-`, `*`, `/`, `^`, `%`
-   
-   Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `? :`*(ternary operator)*
-   
-   Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`, `pow(x,y)`
-
-   Special functions: 
-   * `conditional( value, cond)`
-      
-      Only sets the value when the condition is true.
+   + Numeric operators: `+`, `-`, `*`, `/`, `^`, `%`
+   + Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `? :`*(ternary operator)*
+   + Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`, `pow(x,y)`
+   + Special functions: 
+        `conditional( value, cond)` Only sets the value when the condition is true.
    
 ### `<CONSTANT>`
-+ CONSTANT
++ **CONSTANT**
 
    Numeric Constant. example usage `FLOAT:0x01B39A4C = 70`
 
@@ -93,25 +88,25 @@ Remarks:
 ## Read-Writes expressions:
 ___
 ### `<SECTION_NAME>:<ENBPARM_UINAME>`
-+ SECTION_NAME
++ **SECTION_NAME**
 
    Section names listed by enb UI. For example, ENBBLOOM.FX, COLORCORRECTION, .etc
-+ ENBPARAM_UINAME
++ **ENBPARAM_UINAME**
 
    Parameter name listed in .fx parm annotation UIName, or name listed in enbUI.
-+ example: `ENFEFFECT.FX:"my Awsome Variable"`
++ **example:** `ENFEFFECT.FX:"my Awsome Variable"`
  
 ### `<TYPE>:<ADDRESS>+<OFFSET>+...`
-+ TYPE
++ **TYPE**
 
    Variable type of this address. Possible values are `INT`, `FLOAT`, `BOOL`.
-+ ADDRESS
++ **ADDRESS**
 
    The memory address of the variable.
-+ OFFSET
++ **OFFSET**
 
    The memory offsets to apply if base address need to be dereferenced. 
-+ example: `FLOAT:0x012E56A0+0x20`
+ + **example:** `FLOAT:0x012E56A0+0x20`
 
 # Licence
 
