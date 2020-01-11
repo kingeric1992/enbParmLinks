@@ -6,7 +6,7 @@ ___
 Put enbParmLink.enbplugin under `/enbseries` in your SkyrimLE base directory.
 
 # Setup
-All linkage is defined through enbParmLink.cfg located in /enbseries, with 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
+All linkage is defined through enbParmLink.cfg located in `/enbseries`, with 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
 ```ini
 ;Expression on the right hand side will be assigned to the left hand side.
 [READ]
@@ -77,7 +77,8 @@ Remarks:
    
    Logical operators: `&&`, `||`, `==`, `!=`, `>`, `<`, `>=`, `<=`, `? :`*(ternary operator)*
    
-   Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`
+   Intrinsic functions: `sin()`, `cos()`, `tan()`, `atan2(x,y)`, `asin()`, `acos()`, `atan()`, `sinh()`, `cosh()`, `tanh()`, `asinh()`, `acosh()`, `atanh()`, `log2()`, `log10()`, `ln()`, `exp()`, `sign()`, `rint()`*(round)*, `min(x,y)`, `max(x,y)`, `clamp(x, min, max)`, `lerp(x,y,w)`, `pow(x,y)`
+
    Special functions: 
    * `conditional( value, cond)`
       
@@ -91,7 +92,7 @@ Remarks:
 
 ## Read-Writes expressions:
 ___
-`<SECTION_NAME>:<ENBPARM_UINAME>`
+### `<SECTION_NAME>:<ENBPARM_UINAME>`
 + SECTION_NAME
 
    Section names listed by enb UI. For example, ENBBLOOM.FX, COLORCORRECTION, .etc
@@ -100,7 +101,7 @@ ___
    Parameter name listed in .fx parm annotation UIName, or name listed in enbUI.
 + example: `ENFEFFECT.FX:"my Awsome Variable"`
  
-`<TYPE>:<ADDRESS>+<OFFSET>+...`
+### `<TYPE>:<ADDRESS>+<OFFSET>+...`
 + TYPE
 
    Variable type of this address. Possible values are `INT`, `FLOAT`, `BOOL`.
