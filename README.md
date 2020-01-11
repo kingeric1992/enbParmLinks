@@ -8,15 +8,19 @@ Put enbParmLink.enbplugin under `/enbseries` in your SkyrimLE base directory.
 # Setup
 All linkage is defined through `enbParmLink.cfg` located in `/enbseries`, under 3 sections `[INIT]`, `[READ]` and `[SYNC]`.
 ```ini
-;Expression on the right hand side will be assigned to the left hand side.
+; Expression on the right hand side will be assigned to the left hand side.
 [READ]
+; Assign value from one ENB UI entry to another.
 EFFECT.TXT:"target parm" = ENBEFFECT.FX:"source parm"
 
-;Any changes from either sides will sync to the counter part
+
+; Any changes from either sides will sync to the counter part
 [SYNC]
+; Sync the value between a float in the memory and a ENB entry.
 ENBDEPTHOFFIELD.FX:"sync fov" = FLOAT:0x01B39A4C
 
-;Values are set upon ENB reset, load or saves.
+
+; Values are set upon ENB reset, load or saves.
 [INIT] 
 ; to assign simple value to target
 FLOAT:0x01B39A4C = 70
@@ -32,6 +36,7 @@ Additionally, multiline expressions or linking to same key is also avalible.
 ; linking to same variable
 EFFECT.TXT:"VALUE" = EXPR:"conditional(1, (a0 == 0) || ( a0 == 2 ) || (a0 == 4) )", EFFECT.TXT:"raw"
 EFFECT.TXT:"VALUE" = EXPR:"conditional(2, (a0 == 0x01) || ( a0 == 0x03 ) || (a0 == 0x05) )", EFFECT.TXT:"raw"
+
 
 ; multi-line are enclosed by <<<LINES & LINES pairs
 EFFECT.TXT:"focal length" = <<<LINES
